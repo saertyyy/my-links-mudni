@@ -494,4 +494,41 @@ footer {
 nav a {
     font-size: 13px; /* Немного уменьшим шрифт, чтобы влезло */
     white-space: nowrap; /* Чтобы слова не разрывались */
+}/* --- ЦВЕТОВАЯ ПОДСВЕТКА БРЕНДОВ --- */
+
+/* 1. Samsung — Классический синий */
+.phone-card.samsung:hover {
+    border-color: #034ea2;
+    box-shadow: 0 0 20px rgba(3, 78, 162, 0.6);
+}
+.phone-card.samsung:hover i { color: #034ea2; }
+
+/* 2. Xiaomi — Фирменный оранжевый */
+.phone-card.xiaomi:hover {
+    border-color: #ff6700;
+    box-shadow: 0 0 20px rgba(255, 103, 0, 0.6);
+}
+.phone-card.xiaomi:hover i { color: #ff6700; }
+
+/* 3. Vivo — Неоновый голубой */
+.phone-card.vivo:hover {
+    border-color: #415fff;
+    box-shadow: 0 0 20px rgba(65, 95, 255, 0.6);
+}
+.phone-card.vivo:hover i { color: #415fff; }
+
+/* 4. Huawei — Премиальный красный/бордо */
+.phone-card.huawei:hover {
+    border-color: #cf0a2c;
+    box-shadow: 0 0 20px rgba(207, 10, 44, 0.6);
+}
+.phone-card.huawei:hover i { color: #cf0a2c; }
+
+/* Общее правило для плавности (если его еще нет) */
+.phone-card {
+    transition: all 0.4s ease;
+}
+
+.phone-card i {
+    transition: color 0.4s ease;
 }
