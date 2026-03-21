@@ -394,4 +394,26 @@ footer {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}/* --- АНИМАЦИЯ РАМКИ АВАТАРА --- */
+
+.avatar {
+    border-radius: 4px; /* Квадратный скругленный как в Steam */
+    padding: 2px; /* Отступ для градиента */
+    background: linear-gradient(45deg, #67c1f5, #c7d5e0, #a67c52, #67c1f5);
+    background-size: 400% 400%;
+    animation: avatar-rgb 3s ease infinite;
+    box-shadow: 0 0 10px rgba(103, 193, 245, 0.3);
+    transition: transform 0.3s;
+}
+
+/* Эффект увеличения аватара при наведении */
+.avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(103, 193, 245, 0.6);
+}
+
+@keyframes avatar-rgb {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
