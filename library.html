@@ -2,99 +2,30 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Библиотека | Steam Style</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Library</title>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="scroll-progress"></div>
-
     <header>
         <div class="header-content">
-            <i class="fas fa-gamepad logo-icon"></i> Моё Инфо
             <nav>
-                <a href="pc.html">МОЙ ПК</a>
-                <a href="library.html" class="active">БИБЛИОТЕКА</a>
-                <a href="index.html">МОИ ССЫЛКИ</a>
-                <a href="community.html">Топ флагманы</a>
+                <a href="index.html">Об активностях</a>
+                <a href="pc.html">Мой ПК</a>
+                <a href="library.html" class="active">Библиотека</a>
+                <a href="phones.html">Топ флагманов</a>
             </nav>
             <div class="user-block">
-                <span class="user-balance">0.00$</span>
-                <span class="user-name">saertyyy</span><span class="status-dot"></span>
-                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
+                <span class="user-balance">0.71$</span>
+                <img src="avatar.jpg" class="avatar">
             </div>
         </div>
     </header>
-
-    <main>
-        <div class="container">
-            <h1 class="main-title">Моя библиотека скриншотов</h1>
-            <div class="library-grid">
-                <div class="library-item">
-                    <img src="image1.png" alt="Фигура Шута на механическом пауке">
-                    <p>Фигура Шута на механическом пауке</p>
-                </div>
-                <div class="library-item">
-                    <img src="image2.png" alt="Шут в Дата-центре">
-                    <p>Шут в Дата-центре</p>
-                </div>
-            </div>
-            <div style="margin-top: 30px;">
-                <a href="index.html" style="color: #67c1f5; text-decoration: none; font-size: 14px;">
-                    <i class="fas fa-arrow-left"></i> Назад к ссылкам
-                </a>
-            </div>
+    <div class="container">
+        <h1>МОЯ БИБЛИОТЕКА СКРИНШОТОВ</h1>
+        <div class="library-item">
+            <img src="image_6b3b88.jpg" alt="Screenshot">
+            <p>Атмосферный кадр</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">INFO<sup>®</sup></div>
-            <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
-        </div>
-    </footer>
-
-    <div id="image-modal" class="modal hidden">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="modal-img">
-        <div id="modal-caption" class="modal-caption"></div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles-config.js"></script>
-    <script src="clicker.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('loaded'); // ПОЯВЛЕНИЕ СТРАНИЦЫ
-            
-            const modal = document.getElementById('image-modal');
-            const modalImg = document.getElementById('modal-img');
-            const captionText = document.getElementById('modal-caption');
-            const closeBtn = document.querySelector('.modal-close');
-            const images = document.querySelectorAll('.library-item img');
-
-            images.forEach(img => {
-                img.addEventListener('click', function() {
-                    modal.classList.remove('hidden');
-                    modalImg.src = this.src;
-                    captionText.textContent = this.alt;
-                });
-            });
-
-            function closeModal() { modal.classList.add('hidden'); }
-            if (closeBtn) closeBtn.addEventListener('click', closeModal);
-            window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-            window.onscroll = function() {
-                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                let scrolled = (winScroll / height) * 100;
-                let progressBar = document.querySelector(".scroll-progress");
-                if(progressBar) progressBar.style.width = scrolled + "%";
-            };
-        });
-    </script>
 </body>
 </html>

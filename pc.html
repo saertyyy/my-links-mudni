@@ -2,97 +2,39 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Характеристики ПК | Steam Style</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>My PC</title>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="scroll-progress"></div>
-
     <header>
         <div class="header-content">
-            <i class="fas fa-gamepad logo-icon"></i> Моё Инфо
             <nav>
-                <a href="pc.html" class="active">МОЙ ПК</a>
-                <a href="library.html">БИБЛИОТЕКА</a>
-                <a href="index.html">МОИ ССЫЛКИ</a>
-                <a href="community.html">Топ флагманы</a>
+                <a href="index.html">Об активностях</a>
+                <a href="pc.html" class="active">Мой ПК</a>
+                <a href="library.html">Библиотека</a>
+                <a href="phones.html">Топ флагманов</a>
             </nav>
             <div class="user-block">
-                <span class="user-balance">0.00$</span>
-                <span class="user-name">saertyyy</span><span class="status-dot"></span>
-                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
+                <span class="user-balance">0.71$</span>
+                <img src="avatar.jpg" class="avatar">
             </div>
         </div>
     </header>
-
-    <main>
-        <div class="container">
-            <h1 class="main-title">Конфигурация системы</h1>
-            <div class="cpu-graph-container">
-                <div class="graph-header">
-                    <span>НАГРУЗКА СИСТЕМЫ (CPU)</span>
-                    <span id="cpu-percentage">0%</span>
-                </div>
-                <canvas id="cpuGraph"></canvas>
+    <div class="container">
+        <h1>КОНФИГУРАЦИЯ СИСТЕМЫ</h1>
+        <div class="pc-specs-grid">
+            <div class="spec-item">
+                <i class="fas fa-microchip"></i>
+                <strong>ПРОЦЕССОР</strong>
+                <p>AMD Ryzen 5 5600X</p>
             </div>
-            <div class="pc-specs-grid">
-                <div class="spec-item"><div class="spec-label"><i class="fas fa-microchip"></i> ПРОЦЕССОР</div><div class="spec-value">AMD Ryzen 5 5600X</div></div>
-                <div class="spec-item"><div class="spec-label"><i class="fas fa-memory"></i> ВИДЕОКАРТА</div><div class="spec-value">NVIDIA GeForce GTX 1070TI 8GB</div></div>
-                <div class="spec-item"><div class="spec-label"><i class="fas fa-server"></i> ОПЕРАТИВНАЯ ПАМЯТЬ</div><div class="spec-value">16 GB DDR4 3200MHz</div></div>
-                <div class="spec-item"><div class="spec-label"><i class="fas fa-hdd"></i> НАКОПИТЕЛЬ</div><div class="spec-value">5 дисков (HDD, SSD, NVMe)</div></div>
-                <div class="spec-item"><div class="spec-label"><i class="fas fa-desktop"></i> МОНИТОР</div><div class="spec-value">27" Full HD 200Hz IPS</div></div>
-            </div>
-            <div style="margin-top: 30px;">
-                <a href="index.html" style="color: #67c1f5; text-decoration: none; font-size: 14px;">
-                    <i class="fas fa-arrow-left"></i> Назад к ссылкам
-                </a>
+            <div class="spec-item">
+                <i class="fas fa-video"></i>
+                <strong>ВИДЕОКАРТА</strong>
+                <p>NVIDIA GeForce GTX 1070Ti 8GB</p>
             </div>
         </div>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">INFO<sup>®</sup></div>
-            <p>© 2026. Этот сайт создал я</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles-config.js"></script>
-    <script src="clicker.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('loaded'); // ПРОЯВЛЕНИЕ СТРАНИЦЫ
-
-            const canvas = document.getElementById('cpuGraph');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                const cpuText = document.getElementById('cpu-percentage');
-                let data = Array(50).fill(0);
-                canvas.width = canvas.offsetWidth;
-                canvas.height = canvas.offsetHeight;
-
-                function draw() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    const lastValue = data[data.length - 1];
-                    const newValue = Math.max(5, Math.min(95, lastValue + (Math.random() * 20 - 10)));
-                    data.push(newValue); data.shift();
-                    cpuText.textContent = Math.round(newValue) + '%';
-                    ctx.beginPath(); ctx.strokeStyle = '#67c1f5'; ctx.lineWidth = 2;
-                    const step = canvas.width / (data.length - 1);
-                    data.forEach((v, i) => {
-                        const x = i * step; const y = canvas.height - (v / 100 * canvas.height);
-                        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-                    });
-                    ctx.stroke();
-                    requestAnimationFrame(draw);
-                }
-                draw();
-            }
-        });
-    </script>
+    </div>
 </body>
 </html>
