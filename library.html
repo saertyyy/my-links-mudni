@@ -55,6 +55,55 @@
             <p>© 2026. Страница библиотеки.</p>
         </div>
     </footer>
+<div id="image-modal" class="modal hidden">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption" class="modal-caption"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const captionText = document.getElementById('modal-caption');
+            const closeBtn = document.querySelector('.modal-close');
 
+            // Находим все картинки в галерее
+            const images = document.querySelectorAll('.library-item img');
+
+            // Для каждой картинки добавляем событие "клик"
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    // 1. Показываем модальное окно
+                    modal.classList.remove('hidden');
+                    // 2. Подставляем адрес кликнутой картинки в окно
+                    modalImg.src = this.src;
+                    // 3. Подставляем текст из атрибута 'alt' как подпись
+                    captionText.textContent = this.alt;
+                });
+            });
+
+            // Настройка закрытия окна
+            function closeModal() {
+                modal.classList.add('hidden');
+            }
+
+            // Закрытие при клике на крестик
+            if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+            // Закрытие при клике на тёмный фон окна (мимо картинки)
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Закрытие при нажатии клавиши Esc (для удобства)
+            window.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
