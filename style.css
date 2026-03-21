@@ -152,4 +152,63 @@ footer {
     padding-top: 20px;
     color: #8f98a0;
     font-size: 12px;
+}/* --- СТИЛИ ДЛЯ БИБЛИОТЕКИ --- */
+
+/* Класс для скрытия элементов */
+.hidden {
+    display: none !important;
+}
+
+/* Сетка галереи */
+.library-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Чтобы на мобильных переносилось */
+    margin-top: 30px;
+}
+
+/* Элемент галереи (картинка + подпись) */
+.library-item {
+    flex: 1;
+    min-width: 300px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(103, 193, 245, 0.1);
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.library-item:hover {
+    transform: translateY(-5px);
+    border: 1px solid rgba(103, 193, 245, 0.3);
+    box-shadow: 0 5px 15px rgba(103, 193, 245, 0.1);
+}
+
+/* Стиль картинки */
+.library-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Чтобы сохранялись пропорции */
+    display: block;
+}
+
+/* Стиль подписи под картинкой */
+.library-item p {
+    padding: 15px;
+    margin: 0;
+    color: #acb2b8;
+    font-size: 13px;
+    text-align: center;
+    background: #111; /* Чуть темнее фон подписи */
+}
+
+/* Плавное появление (для анимации через JS) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#library-content:not(.hidden) {
+    animation: fadeIn 0.4s ease forwards;
 }

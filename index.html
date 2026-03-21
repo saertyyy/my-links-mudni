@@ -12,11 +12,11 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <i class="fab fa-steam logo-icon"></i> ПЛАТФОРМА
+                </i> Моё Инфо
             </div>
             <nav>
                 <a href="#">МАГАЗИН</a>
-                <a href="#">БИБЛИОТЕКА</a>
+                <a href="#" id="nav-library">БИБЛИОТЕКА</a>
                 <a href="#" class="active">МОИ ССЫЛКИ</a>
                 <a href="#">СООБЩЕСТВО</a>
             </nav>
@@ -73,6 +73,20 @@
             </div>
         </div>
     </main>
+    <div id="library-content" class="container hidden">
+    <h1 class="main-title">Моя библиотека скриншотов</h1>
+    
+    <div class="library-grid">
+        <div class="library-item">
+            <img src="image1.png" alt="Скриншот Библиотеки 1">
+            <p>Фигура Шута на механическом пауке</p>
+        </div>
+        <div class="library-item">
+            <img src="image2.png" alt="Скриншот Библиотеки 2">
+            <p>Шут в Дата-центре</p>
+        </div>
+    </div>
+</div>
 
     <footer>
         <div class="footer-content">
@@ -80,6 +94,38 @@
             <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
         </div>
     </footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Скрипт для клика по БАЛАНСУ
+            const balanceElement = document.getElementById('user-balance');
+            if (balanceElement) {
+                balanceElement.addEventListener('click', function() {
+                    this.textContent = '9999.99$';
+                    this.style.color = '#fff';
+                    this.style.textShadow = '0 0 10px #67c1f5';
+                });
+            }
 
+            // 2. Скрипт для переключения на БИБЛИОТЕКУ
+            const libraryLink = document.getElementById('nav-library'); 
+            const myLinksLink = document.querySelector('nav a.active'); 
+            const mainContent = document.querySelector('main');       
+            const libraryContent = document.getElementById('library-content'); 
+
+            if (libraryLink) {
+                libraryLink.addEventListener('click', function(e) {
+                    e.preventDefault(); 
+                    
+                    // Прячем главный блок и показываем библиотеку
+                    mainContent.classList.add('hidden');
+                    libraryContent.classList.remove('hidden');
+
+                    // Переключаем "подсветку" в меню
+                    if (myLinksLink) myLinksLink.classList.remove('active');
+                    this.classList.add('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
