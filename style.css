@@ -429,4 +429,60 @@ footer {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}/* --- СТИЛИ ДЛЯ МАГАЗИНА ТЕЛЕФОНОВ --- */
+
+.phone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.phone-card {
+    background: rgba(42, 71, 94, 0.4); /* Фон в стиле Steam */
+    border: 1px solid rgba(103, 193, 245, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.phone-card:hover {
+    background: rgba(42, 71, 94, 0.8);
+    transform: translateY(-5px);
+    border-color: #67c1f5;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.phone-card i {
+    font-size: 50px;
+    color: #67c1f5;
+    margin-bottom: 15px;
+}
+
+.phone-card h3 {
+    margin: 10px 0;
+    color: #fff;
+}
+
+.phone-card p {
+    font-size: 0.9em;
+    color: #acb2b8;
+    margin-bottom: 20px;
+}
+
+.ozon-btn {
+    display: inline-block;
+    background: #005bff; /* Цвет Ozon */
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.ozon-btn:hover {
+    background: #0046c7;
+    box-shadow: 0 0 15px rgba(0, 91, 255, 0.5);
 }
