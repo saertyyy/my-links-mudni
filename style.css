@@ -594,4 +594,14 @@ nav a {
     z-index: -1; /* ОЧЕНЬ ВАЖНО: уводит фон на задний план */
     top: 0;
     left: 0;
+}/* 1. Сначала скрываем всё содержимое body */
+body {
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    background-color: #1b2838; /* Цвет Steam, чтобы не было белой вспышки */
+}
+
+/* 2. Класс, который VS Code / Браузер добавит сам при загрузке */
+body.loaded {
+    opacity: 1;
 }
