@@ -279,4 +279,48 @@ footer {
     color: #acb2b8;
     padding: 20px 0;
     font-size: 16px;
+}/* --- СТИЛИ ДЛЯ РАЗДЕЛА "МОЙ ПК" --- */
+
+.pc-specs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* Узкие промежутки между строками как в Steam */
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.spec-item {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.spec-item:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    width: 250px;
+    color: #61686d; /* Серый цвет для названий категорий */
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spec-label i {
+    width: 20px;
+    color: #67c1f5; /* Синие иконки */
+}
+
+.spec-value {
+    color: #c7d5e0;
+    font-size: 14px;
+}
+
+/* Эффект при наведении на строку */
+.spec-item:hover {
+    background-color: rgba(255, 255, 255, 0.02);
 }
