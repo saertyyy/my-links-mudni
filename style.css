@@ -397,15 +397,22 @@ footer {
 }/* --- АНИМАЦИЯ РАМКИ АВАТАРА --- */
 
 .avatar {
-    .avatar {
-    width: 34px !important;    /* Строго ограничиваем ширину */
-    height: 34px !important;   /* Строго ограничиваем высоту */
-    object-fit: cover;         /* Чтобы лицо вписалось ровно */
-    border-radius: 4px;        /* Скругление углов */
+    /* 1. ЖЕСТКОЕ ОГРАНИЧЕНИЕ (сразу несколько) */
+    width: 34px !important;    /* Ширина */
+    max-width: 34px !important; /* Максимальная ширина */
+    height: 34px !important;   /* Высота */
+    max-height: 34px !important; /* Максимальная высота */
+    
+    /* 2. ЧТОБЫ ЛИЦО НЕ СПЛЮЩИЛОСЬ */
+    object-fit: cover;         /* Масштабируем и обрезаем лишнее внутри */
+    
+    /* 3. ОФОРМЛЕНИЕ */
+    border-radius: 4px;        /* Квадратная со скруглением */
     display: inline-block;     /* Чтобы не вылетала из строки */
     vertical-align: middle;    /* Выравнивание по центру ника */
+    box-sizing: content-box;   /* Чтобы padding не увеличивал размер */
     
-    /* Твои эффекты перелива */
+    /* 4. АНИМАЦИИ (твои переливы оставляем) */
     padding: 2px;
     background: linear-gradient(45deg, #67c1f5, #c7d5e0, #a67c52, #67c1f5);
     background-size: 400% 400%;
@@ -417,16 +424,7 @@ footer {
 /* Эффект при наведении */
 .avatar:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(103, 193, 245, 0.6);
 }
-}
-
-/* Эффект увеличения аватара при наведении */
-.avatar:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(103, 193, 245, 0.6);
-}
-
 @keyframes avatar-rgb {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
