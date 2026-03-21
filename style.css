@@ -2,14 +2,20 @@
 body {
     margin: 0;
     padding: 0;
-    /* Глубокий градиент: от темно-синего в центре к почти черному по краям */
+    background-color: #1b2838; /* Фон по умолчанию */
     background: radial-gradient(circle at center, #1b2838 0%, #0f171f 100%);
-    background-attachment: fixed; /* Чтобы фон не прокручивался */
+    background-attachment: fixed;
     color: #c7d5e0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    opacity: 0; /* Для анимации появления */
+    transition: opacity 0.8s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
 }
 
 .container {
