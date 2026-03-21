@@ -2,41 +2,115 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <title>Сообщество | Техно-Рекомендации</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>Phones Top</title>
 </head>
+// Как только страница загрузилась — проявляем её
+window.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
+});
 <body>
+    <div id="particles-js"></div>
+<div class="scroll-progress"></div>
+
     <header>
         <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-gamepad logo-icon"></i> Моё Инфо
+            </div>
             <nav>
-                <a href="index.html">Об активностях</a>
-                <a href="pc.html">Мой ПК</a>
-                <a href="library.html">Библиотека</a>
-                <a href="phones.html" class="active">Топ флагманов</a>
+                <a href="pc.html">МОЙ ПК</a>
+                <a href="library.html">БИБЛИОТЕКА</a>
+                <a href="index.html">МОИ ССЫЛКИ</a>
+                <a href="community.html">Топ флагманы</a>
             </nav>
             <div class="user-block">
-                <span class="user-balance">0.71$</span>
-                <img src="avatar.jpg" class="avatar">
+                <span class="user-balance">0.00$</span>
+                <span class="user-name">saertyyy</span><span class="status-dot"></span>
+                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
             </div>
         </div>
     </header>
-    <div class="container">
-        <h1>МОЙ ТОП ФЛАГМАНОВ 2026</h1>
-        <div class="phone-grid">
-            <div class="phone-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Samsung S26 Ultra</h3>
-                <p>Будущий король производительности</p>
-                <a href="#" class="ozon-btn">Купить на OZON</a>
+
+    <main>
+        <div class="container">
+            <h1 class="main-title">Мой топ флагманов 2026</h1>
+               <div class="phone-grid">
+                <div class="phone-card samsung">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Samsung S26 Ultra</h3>
+                    <p>Будущий король производительности</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Samsung+S26+Ultra" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card samsung">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Samsung S25 Ultra</h3>
+                    <p>Актуальный топ-флагман</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Samsung+S25+Ultra" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card samsung">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Samsung S26</h3>
+                    <p>Компактная мощь нового поколения</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Samsung+S26" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card samsung">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Samsung S25</h3>
+                    <p>Баланс стиля и технологий</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Samsung+S25" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card xiaomi">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Xiaomi 15 Ultra</h3>
+                    <p>Лучшая камера для энтузиастов</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Xiaomi+15+Ultra" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card vivo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Vivo X300 Pro</h3>
+                    <p>Инновационный зум и оптика Zeiss</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Vivo+X300+Pro" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
+
+                <div class="phone-card huawei">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Huawei Pura 80 Ultra</h3>
+                    <p>Технологии будущего и стиль</p>
+                    <a href="https://www.ozon.ru/category/smartfony-15502/?text=Huawei+Pura+80+Ultra" target="_blank" class="ozon-btn">Купить на OZON</a>
+                </div>
             </div>
-            <div class="phone-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Xiaomi 15 Ultra</h3>
-                <p>Лучшая камера</p>
-                <a href="#" class="ozon-btn">Купить на OZON</a>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
+
+ <footer>
+        <div class="footer-content">
+            <div class="footer-logo">INFO<sup>®</sup></div>
+            <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            let progressBar = document.querySelector(".scroll-progress");
+            if(progressBar) progressBar.style.width = scrolled + "%";
+        };
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
+    
+    <script src="clicker.js"></script>
 </body>
 </html>
