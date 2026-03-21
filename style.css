@@ -397,13 +397,28 @@ footer {
 }/* --- АНИМАЦИЯ РАМКИ АВАТАРА --- */
 
 .avatar {
-    border-radius: 4px; /* Квадратный скругленный как в Steam */
-    padding: 2px; /* Отступ для градиента */
+    .avatar {
+    width: 34px !important;    /* Строго ограничиваем ширину */
+    height: 34px !important;   /* Строго ограничиваем высоту */
+    object-fit: cover;         /* Чтобы лицо вписалось ровно */
+    border-radius: 4px;        /* Скругление углов */
+    display: inline-block;     /* Чтобы не вылетала из строки */
+    vertical-align: middle;    /* Выравнивание по центру ника */
+    
+    /* Твои эффекты перелива */
+    padding: 2px;
     background: linear-gradient(45deg, #67c1f5, #c7d5e0, #a67c52, #67c1f5);
     background-size: 400% 400%;
     animation: avatar-rgb 3s ease infinite;
     box-shadow: 0 0 10px rgba(103, 193, 245, 0.3);
     transition: transform 0.3s;
+}
+
+/* Эффект при наведении */
+.avatar:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(103, 193, 245, 0.6);
+}
 }
 
 /* Эффект увеличения аватара при наведении */
