@@ -485,4 +485,13 @@ footer {
 .ozon-btn:hover {
     background: #0046c7;
     box-shadow: 0 0 15px rgba(0, 91, 255, 0.5);
+}nav {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Позволит кнопкам переноситься, если экран узкий */
+}
+
+nav a {
+    font-size: 13px; /* Немного уменьшим шрифт, чтобы влезло */
+    white-space: nowrap; /* Чтобы слова не разрывались */
 }
