@@ -49,8 +49,8 @@ body::before {
 }
 
 .container {
-    max-width: 940px;
-    margin: 0 auto;
+    max-width: 940px; /* Жестко ограничиваем ширину колонки */
+    margin: 0 auto;   /* АВТО-ОТСТУПЫ слева и справа: центрируют блок */
     padding: 20px;
     position: relative;
     z-index: 1;
@@ -259,4 +259,9 @@ footer {
     padding-top: 20px;
     color: #8f98a0;
     font-size: 12px;
+}.library-item img {
+    width: 100%;       /* Картинка растягивается на всю ширину `.container` */
+    height: auto;      /* Сохраняет пропорции */
+    display: block;    /* Убирает лишние отступы снизу */
+    border-radius: 4px; /* Легкое скругление углов (как в Steam) */
 }
