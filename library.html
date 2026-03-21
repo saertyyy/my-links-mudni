@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-// Как только страница загрузилась — проявляем её
-window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-});
 <body>
     <div id="particles-js"></div>
-<div class="scroll-progress"></div>
+    <div class="scroll-progress"></div>
+
     <header>
         <div class="header-content">
             <i class="fas fa-gamepad logo-icon"></i> Моё Инфо
@@ -34,18 +31,16 @@ window.addEventListener('DOMContentLoaded', () => {
     <main>
         <div class="container">
             <h1 class="main-title">Моя библиотека скриншотов</h1>
-            
             <div class="library-grid">
                 <div class="library-item">
-                    <img src="image1.png" alt="Скриншот 1">
+                    <img src="image1.png" alt="Фигура Шута на механическом пауке">
                     <p>Фигура Шута на механическом пауке</p>
                 </div>
                 <div class="library-item">
-                    <img src="image2.png" alt="Скриншот 2">
+                    <img src="image2.png" alt="Шут в Дата-центре">
                     <p>Шут в Дата-центре</p>
                 </div>
             </div>
-
             <div style="margin-top: 30px;">
                 <a href="index.html" style="color: #67c1f5; text-decoration: none; font-size: 14px;">
                     <i class="fas fa-arrow-left"></i> Назад к ссылкам
@@ -60,14 +55,20 @@ window.addEventListener('DOMContentLoaded', () => {
             <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
         </div>
     </footer>
-<div id="image-modal" class="modal hidden">
+
+    <div id="image-modal" class="modal hidden">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modal-img">
         <div id="modal-caption" class="modal-caption"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
+    <script src="clicker.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded'); // ПОЯВЛЕНИЕ СТРАНИЦЫ
+            
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-img');
             const captionText = document.getElementById('modal-caption');
@@ -85,23 +86,15 @@ window.addEventListener('DOMContentLoaded', () => {
             function closeModal() { modal.classList.add('hidden'); }
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
             window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-            window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+            window.onscroll = function() {
+                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                let scrolled = (winScroll / height) * 100;
+                let progressBar = document.querySelector(".scroll-progress");
+                if(progressBar) progressBar.style.width = scrolled + "%";
+            };
         });
     </script>
-
-    <script>
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            let progressBar = document.querySelector(".scroll-progress");
-            if(progressBar) progressBar.style.width = scrolled + "%";
-        };
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles-config.js"></script>
-
-    <script src="clicker.js"></script>
 </body>
 </html>
