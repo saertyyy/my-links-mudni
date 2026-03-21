@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+<div class="scroll-progress"></div>
 
     <header>
         <div class="header-content">
@@ -20,7 +21,7 @@
             </nav>
             <div class="user-block">
                 <span class="user-balance">0.00$</span>
-                <span class="user-name">saertyyy</span>
+                <span class="user-name">saertyyy</span><span class="status-dot"></span>
                 <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
             </div>
         </div>
@@ -73,8 +74,8 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">STEAM<sup>®</sup></div>
-            <p>© 2026. Информация о системе.</p>
+            <div class="footer-logo">INFO<sup>®</sup></div>
+            <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
         </div>
     </footer>
 <script>
@@ -137,6 +138,14 @@
     canvas.height = canvas.offsetHeight;
     
     draw();
+</script>
+<script>
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.querySelector(".scroll-progress").style.width = scrolled + "%";
+    };
 </script>
 </body>
 </html>

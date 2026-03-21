@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
+<div class="scroll-progress"></div>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -22,7 +22,7 @@
             </nav>
             <div class="user-block">
                 <span class="user-balance">0.00$</span>
-                <span class="user-name">saertyyy</span>
+                <span class="user-name">saertyyy</span><span class="status-dot"></span>
                 <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34"></img>
             </div>
         </div>
@@ -146,5 +146,13 @@
             }
         });
     </script>
+    <script>
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.querySelector(".scroll-progress").style.width = scrolled + "%";
+    };
+</script>
 </body>
 </html>
