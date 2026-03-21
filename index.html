@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-// Как только страница загрузилась — проявляем её
-window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-});
 <body>
     <div id="particles-js"></div>
-<div class="scroll-progress"></div>
+    <div class="scroll-progress"></div>
+
     <header>
         <div class="header-content">
             <div class="logo">
@@ -22,13 +19,13 @@ window.addEventListener('DOMContentLoaded', () => {
             <nav>
                 <a href="pc.html">МОЙ ПК</a>
                 <a href="library.html">БИБЛИОТЕКА</a>
-                <a href="index.html">МОИ ССЫЛКИ</a>
+                <a href="index.html" class="active">МОИ ССЫЛКИ</a>
                 <a href="community.html">Топ флагманы</a>
             </nav>
             <div class="user-block">
                 <span class="user-balance">0.00$</span>
                 <span class="user-name">saertyyy</span><span class="status-dot"></span>
-                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34"></img>
+                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
             </div>
         </div>
     </header>
@@ -38,7 +35,6 @@ window.addEventListener('DOMContentLoaded', () => {
             <h1 class="main-title">Внешние ссылки для подключения</h1>
             
             <div class="links-grid">
-                
                 <a href="https://www.tiktok.com/@saertyyyedits1?_r=1&_t=ZT-94sd7q6gBGn" target="_blank" class="link-card tiktok">
                     <div class="icon-box"><i class="fab fa-tiktok"></i></div>
                     <div class="info-box">
@@ -74,7 +70,6 @@ window.addEventListener('DOMContentLoaded', () => {
                         <p>Прямые трансляции.</p>
                     </div>
                 </a>
-
             </div>
         </div>
     </main>
@@ -85,68 +80,23 @@ window.addEventListener('DOMContentLoaded', () => {
             <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
         </div>
     </footer>
-<script>
-<script>
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            let progressBar = document.querySelector(".scroll-progress");
-            if(progressBar) progressBar.style.width = scrolled + "%";
-        };
-    </script>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
     <script src="particles-config.js"></script>
-
     <script src="clicker.js"></script>
-</body>
-</html>
-    </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // 1. Находим элемент баланса по его классу
-            const balanceElement = document.querySelector('.user-balance');
+        // Код для плавного появления и полоски прокрутки
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
             
-            // 2. Создаем переменную для счета (начинаем с 0)
-            let currentBalance = 0.00;
-
-            if (balanceElement) {
-                // Делаем курсор в виде указателя, чтобы было понятно, что можно кликать
-                balanceElement.style.cursor = 'pointer';
-
-                // 3. Добавляем само событие клика
-                balanceElement.addEventListener('click', function() {
-                    // Прибавляем 1 к балансу
-                    currentBalance += 1;
-
-                    // Обновляем текст на странице (toFixed(2) добавит .00 в конце)
-                    this.textContent = currentBalance.toFixed(2) + '$';
-
-                    // Добавляем красивый эффект свечения Steam
-                    this.style.color = '#fff';
-                    this.style.textShadow = '0 0 10px #67c1f5';
-                    
-                    // Небольшая анимация "прыжка" при клике
-                    this.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        this.style.transform = 'scale(1)';
-                    }, 100);
-                });
-            }
+            window.onscroll = function() {
+                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                let scrolled = (winScroll / height) * 100;
+                let progressBar = document.querySelector(".scroll-progress");
+                if(progressBar) progressBar.style.width = scrolled + "%";
+            };
         });
     </script>
-    <script>
-    window.onscroll = function() {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        let scrolled = (winScroll / height) * 100;
-        document.querySelector(".scroll-progress").style.width = scrolled + "%";
-    };
-</script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="particles-config.js"></script>
-<script src="clicker.js"></script>
 </body>
 </html>
