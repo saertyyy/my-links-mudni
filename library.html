@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div id="particles-js"></div>
 <div class="scroll-progress"></div>
     <header>
         <div class="header-content">
@@ -60,61 +61,43 @@
         <img class="modal-content" id="modal-img">
         <div id="modal-caption" class="modal-caption"></div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('image-modal');
             const modalImg = document.getElementById('modal-img');
             const captionText = document.getElementById('modal-caption');
             const closeBtn = document.querySelector('.modal-close');
-
-            // Находим все картинки в галерее
             const images = document.querySelectorAll('.library-item img');
 
-            // Для каждой картинки добавляем событие "клик"
             images.forEach(img => {
                 img.addEventListener('click', function() {
-                    // 1. Показываем модальное окно
                     modal.classList.remove('hidden');
-                    // 2. Подставляем адрес кликнутой картинки в окно
                     modalImg.src = this.src;
-                    // 3. Подставляем текст из атрибута 'alt' как подпись
                     captionText.textContent = this.alt;
                 });
             });
 
-            // Настройка закрытия окна
-            function closeModal() {
-                modal.classList.add('hidden');
-            }
-
-            // Закрытие при клике на крестик
+            function closeModal() { modal.classList.add('hidden'); }
             if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-            // Закрытие при клике на тёмный фон окна (мимо картинки)
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-
-            // Закрытие при нажатии клавиши Esc (для удобства)
-            window.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                    closeModal();
-                }
-            });
+            window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
         });
     </script>
+
     <script>
-    window.onscroll = function() {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        let scrolled = (winScroll / height) * 100;
-        document.querySelector(".scroll-progress").style.width = scrolled + "%";
-    };
-</script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="particles-config.js"></script>
-<div id="particles-js"></div>
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            let progressBar = document.querySelector(".scroll-progress");
+            if(progressBar) progressBar.style.width = scrolled + "%";
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
+
+    <script src="clicker.js"></script>
 </body>
 </html>
