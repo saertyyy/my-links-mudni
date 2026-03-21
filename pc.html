@@ -7,13 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-// Как только страница загрузилась — проявляем её
-window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-});
 <body>
     <div id="particles-js"></div>
-<div class="scroll-progress"></div>
+    <div class="scroll-progress"></div>
 
     <header>
         <div class="header-content">
@@ -36,39 +32,19 @@ window.addEventListener('DOMContentLoaded', () => {
         <div class="container">
             <h1 class="main-title">Конфигурация системы</h1>
             <div class="cpu-graph-container">
-    <div class="graph-header">
-        <span>НАГРУЗКА СИСТЕМЫ (CPU)</span>
-        <span id="cpu-percentage">0%</span>
-    </div>
-    <canvas id="cpuGraph"></canvas>
-</div>
-            <div class="pc-specs-grid">
-                <div class="spec-item">
-                    <div class="spec-label"><i class="fas fa-microchip"></i> ПРОЦЕССОР</div>
-                    <div class="spec-value">AMD Ryzen 5 5600X</div>
+                <div class="graph-header">
+                    <span>НАГРУЗКА СИСТЕМЫ (CPU)</span>
+                    <span id="cpu-percentage">0%</span>
                 </div>
-
-                <div class="spec-item">
-                    <div class="spec-label"><i class="fas fa-memory"></i> ВИДЕОКАРТА</div>
-                    <div class="spec-value">NVIDIA GeForce GTX 1070TI 8GB</div>
-                </div>
-
-                <div class="spec-item">
-                    <div class="spec-label"><i class="fas fa-server"></i> ОПЕРАТИВНАЯ ПАМЯТЬ</div>
-                    <div class="spec-value">16 GB DDR4 3200MHz</div>
-                </div>
-
-                <div class="spec-item">
-                    <div class="spec-label"><i class="fas fa-hdd"></i> НАКОПИТЕЛЬ</div>
-                    <div class="spec-value">5 дисков: 2 HDD по 500гб, 2 SSD по 256гб И 1 SSD NVMe на 128гб</div>
-                </div>
-
-                <div class="spec-item">
-                    <div class="spec-label"><i class="fas fa-desktop"></i> МОНИТОР</div>
-                    <div class="spec-value">27" Full HD 200Hz IPS</div>
-                </div>
+                <canvas id="cpuGraph"></canvas>
             </div>
-
+            <div class="pc-specs-grid">
+                <div class="spec-item"><div class="spec-label"><i class="fas fa-microchip"></i> ПРОЦЕССОР</div><div class="spec-value">AMD Ryzen 5 5600X</div></div>
+                <div class="spec-item"><div class="spec-label"><i class="fas fa-memory"></i> ВИДЕОКАРТА</div><div class="spec-value">NVIDIA GeForce GTX 1070TI 8GB</div></div>
+                <div class="spec-item"><div class="spec-label"><i class="fas fa-server"></i> ОПЕРАТИВНАЯ ПАМЯТЬ</div><div class="spec-value">16 GB DDR4 3200MHz</div></div>
+                <div class="spec-item"><div class="spec-label"><i class="fas fa-hdd"></i> НАКОПИТЕЛЬ</div><div class="spec-value">5 дисков (HDD, SSD, NVMe)</div></div>
+                <div class="spec-item"><div class="spec-label"><i class="fas fa-desktop"></i> МОНИТОР</div><div class="spec-value">27" Full HD 200Hz IPS</div></div>
+            </div>
             <div style="margin-top: 30px;">
                 <a href="index.html" style="color: #67c1f5; text-decoration: none; font-size: 14px;">
                     <i class="fas fa-arrow-left"></i> Назад к ссылкам
@@ -78,74 +54,45 @@ window.addEventListener('DOMContentLoaded', () => {
     </main>
 
     <footer>
- <script>
-        const canvas = document.getElementById('cpuGraph');
-        const ctx = canvas.getContext('2d');
-        const cpuText = document.getElementById('cpu-percentage');
-
-        let data = Array(50).fill(0);
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const lastValue = data[data.length - 1];
-            const newValue = Math.max(5, Math.min(95, lastValue + (Math.random() * 20 - 10)));
-            data.push(newValue);
-            data.shift();
-
-            cpuText.textContent = Math.round(newValue) + '%';
-
-            ctx.strokeStyle = 'rgba(103, 193, 245, 0.1)';
-            ctx.lineWidth = 1;
-            for(let i = 0; i < canvas.width; i += 20) {
-                ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
-            }
-            for(let i = 0; i < canvas.height; i += 15) {
-                ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
-            }
-
-            ctx.beginPath();
-            ctx.strokeStyle = '#67c1f5';
-            ctx.lineWidth = 2;
-            ctx.lineJoin = 'round';
-
-            const step = canvas.width / (data.length - 1);
-            for (let i = 0; i < data.length; i++) {
-                const x = i * step;
-                const y = canvas.height - (data[i] / 100 * canvas.height);
-                if (i === 0) ctx.moveTo(x, y);
-                else ctx.lineTo(x, y);
-            }
-            ctx.stroke();
-
-            ctx.lineTo(canvas.width, canvas.height);
-            ctx.lineTo(0, canvas.height);
-            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, 'rgba(103, 193, 245, 0.2)');
-            gradient.addColorStop(1, 'rgba(103, 193, 245, 0)');
-            ctx.fillStyle = gradient;
-            ctx.fill();
-
-            requestAnimationFrame(draw);
-        }
-
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-        draw();
-    </script>
-
-    <script>
-        window.onscroll = function() {
-            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            let scrolled = (winScroll / height) * 100;
-            let progressBar = document.querySelector(".scroll-progress");
-            if(progressBar) progressBar.style.width = scrolled + "%";
-        };
-    </script>
+        <div class="footer-content">
+            <div class="footer-logo">INFO<sup>®</sup></div>
+            <p>© 2026. Этот сайт создал я</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="particles-config.js"></script>
-
     <script src="clicker.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded'); // ПРОЯВЛЕНИЕ СТРАНИЦЫ
+
+            const canvas = document.getElementById('cpuGraph');
+            if (canvas) {
+                const ctx = canvas.getContext('2d');
+                const cpuText = document.getElementById('cpu-percentage');
+                let data = Array(50).fill(0);
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+
+                function draw() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    const lastValue = data[data.length - 1];
+                    const newValue = Math.max(5, Math.min(95, lastValue + (Math.random() * 20 - 10)));
+                    data.push(newValue); data.shift();
+                    cpuText.textContent = Math.round(newValue) + '%';
+                    ctx.beginPath(); ctx.strokeStyle = '#67c1f5'; ctx.lineWidth = 2;
+                    const step = canvas.width / (data.length - 1);
+                    data.forEach((v, i) => {
+                        const x = i * step; const y = canvas.height - (v / 100 * canvas.height);
+                        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                    });
+                    ctx.stroke();
+                    requestAnimationFrame(draw);
+                }
+                draw();
+            }
+        });
+    </script>
 </body>
 </html>
