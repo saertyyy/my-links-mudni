@@ -22,7 +22,7 @@
             </nav>
             <div class="user-block">
                 <span class="user-balance">0.00$</span>
-                <span class="user-name">USER_1337</span>
+                <span class="user-name">saertyyy</span>
                 <img src="https://via.placeholder.com/34" alt="Avatar" class="avatar">
             </div>
         </div>
@@ -109,6 +109,39 @@
                     // Переключаем "подсветку" в меню
                     if (myLinksLink) myLinksLink.classList.remove('active');
                     this.classList.add('active');
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Находим элемент баланса по его классу
+            const balanceElement = document.querySelector('.user-balance');
+            
+            // 2. Создаем переменную для счета (начинаем с 0)
+            let currentBalance = 0.00;
+
+            if (balanceElement) {
+                // Делаем курсор в виде указателя, чтобы было понятно, что можно кликать
+                balanceElement.style.cursor = 'pointer';
+
+                // 3. Добавляем само событие клика
+                balanceElement.addEventListener('click', function() {
+                    // Прибавляем 1 к балансу
+                    currentBalance += 1;
+
+                    // Обновляем текст на странице (toFixed(2) добавит .00 в конце)
+                    this.textContent = currentBalance.toFixed(2) + '$';
+
+                    // Добавляем красивый эффект свечения Steam
+                    this.style.color = '#fff';
+                    this.style.textShadow = '0 0 10px #67c1f5';
+                    
+                    // Небольшая анимация "прыжка" при клике
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
                 });
             }
         });
