@@ -29,7 +29,13 @@
     <main>
         <div class="container">
             <h1 class="main-title">Конфигурация системы</h1>
-            
+            <div class="cpu-graph-container">
+    <div class="graph-header">
+        <span>НАГРУЗКА СИСТЕМЫ (CPU)</span>
+        <span id="cpu-percentage">0%</span>
+    </div>
+    <canvas id="cpuGraph"></canvas>
+</div>
             <div class="pc-specs-grid">
                 <div class="spec-item">
                     <div class="spec-label"><i class="fas fa-microchip"></i> ПРОЦЕССОР</div>
@@ -71,6 +77,66 @@
             <p>© 2026. Информация о системе.</p>
         </div>
     </footer>
+<script>
+    const canvas = document.getElementById('cpuGraph');
+    const ctx = canvas.getContext('2d');
+    const cpuText = document.getElementById('cpu-percentage');
 
+    let data = Array(50).fill(0); // Данные графика
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Генерация случайной нагрузки (имитация)
+        const lastValue = data[data.length - 1];
+        const newValue = Math.max(5, Math.min(95, lastValue + (Math.random() * 20 - 10)));
+        data.push(newValue);
+        data.shift();
+
+        cpuText.textContent = Math.round(newValue) + '%';
+
+        // Рисуем сетку
+        ctx.strokeStyle = 'rgba(103, 193, 245, 0.1)';
+        ctx.lineWidth = 1;
+        for(let i = 0; i < canvas.width; i += 20) {
+            ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+        }
+        for(let i = 0; i < canvas.height; i += 15) {
+            ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+        }
+
+        // Рисуем график
+        ctx.beginPath();
+        ctx.strokeStyle = '#67c1f5';
+        ctx.lineWidth = 2;
+        ctx.lineJoin = 'round';
+
+        const step = canvas.width / (data.length - 1);
+        for (let i = 0; i < data.length; i++) {
+            const x = i * step;
+            const y = canvas.height - (data[i] / 100 * canvas.height);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Заполнение под графиком (градиент)
+        ctx.lineTo(canvas.width, canvas.height);
+        ctx.lineTo(0, canvas.height);
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+        gradient.addColorStop(0, 'rgba(103, 193, 245, 0.2)');
+        gradient.addColorStop(1, 'rgba(103, 193, 245, 0)');
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        requestAnimationFrame(draw);
+    }
+
+    // Подстройка размера холста
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    draw();
+</script>
 </body>
 </html>
