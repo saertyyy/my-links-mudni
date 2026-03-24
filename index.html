@@ -1,102 +1,165 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои профили | Steam Style</title>
+    <title>MODS VAULT // АРХИВ</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Oswald:wght@300;500&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <div id="particles-js"></div>
-    <div class="scroll-progress"></div>
 
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <i class="fas fa-gamepad logo-icon"></i> Моё Инфо
-            </div>
-            <nav>
-                <a href="pc.html">МОЙ ПК</a>
-                <a href="library.html">БИБЛИОТЕКА</a>
-                <a href="index.html" class="active">МОИ ССЫЛКИ</a>
-                <a href="community.html">Топ флагманы</a>
-            </nav>
-            <div class="user-block">
-                <span class="user-balance">0.00$</span>
-                <span class="user-name">saertyyy</span><span class="status-dot"></span>
-                <img src="avatar.png" alt="Avatar" class="avatar" width="34" height="34">
+<body>
+    <div id="custom-cursor"></div>
+    <div class="noise-overlay"></div>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#horror" class="nav-item color-horror">DATA_HORROR</a>
+            <a href="#visual" class="nav-item color-visual">DATA_VISUAL</a>
+            <a href="#home" class="nav-item logo">VaiseMods</a>
+            <a href="#shaders" class="nav-item color-shaders">DATA_SHADERS</a>
+        </div>
+    </nav>
+
+    <header id="home" class="hero" style="background-image: url('./vault01.png');">
+        <div class="hero-inner">
+            <h1 class="main-title glitch-text" id="typewriter" data-text="VaiseMods"></h1>
+            <p class="subtitle">Сайт для скачивания модов, которые я использую в своих видео.</p>
+            <div class="status-bar">
+                <span class="status-node" id="system-time">TIME: LOADING...</span>
+                <span class="status-node">ACCESS: AUTHORIZED</span>
+                <span class="status-node" style="color: var(--blue);">LOCATION: VAULT_01</span>
             </div>
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <h1 class="main-title">Внешние ссылки для подключения</h1>
-            
-            <div class="links-grid">
-                <a href="https://www.tiktok.com/@saertyyyedits1?_r=1&_t=ZT-94sd7q6gBGn" target="_blank" class="link-card tiktok">
-                    <div class="icon-box"><i class="fab fa-tiktok"></i></div>
-                    <div class="info-box">
-                        <span class="category">СОЦСЕТЬ</span>
-                        <h3>Мой TikTok</h3>
-                        <p>эдиты.</p>
-                    </div>
-                </a>
+    <main class="content-wrapper">
 
-                <a href="https://youtube.com/@vaiseletsplay?si=QfaDAvvMltU9B5kq" target="_blank" class="link-card youtube">
-                    <div class="icon-box"><i class="fab fa-youtube"></i></div>
-                    <div class="info-box">
-                        <span class="category">ВИДЕОХОСТИНГ</span>
-                        <h3>Мой YouTube</h3>
-                        <p>Длинные ролики и обзоры прохождений.</p>
-                    </div>
-                </a>
-
-                <a href="https://vk.com/saertyyyy" target="_blank" class="link-card vk">
-                    <div class="icon-box"><i class="fab fa-vk"></i></div>
-                    <div class="info-box">
-                        <span class="category">СООБЩЕСТВО</span>
-                        <h3>Моя группа VK</h3>
-                        <p>общение.</p>
-                    </div>
-                </a>
-
-                <a href="https://www.twitch.tv/vaiseletsstream" target="_blank" class="link-card twitch">
-                    <div class="icon-box"><i class="fab fa-twitch"></i></div>
-                    <div class="info-box">
-                        <span class="category">СТРИМИНГ</span>
-                        <h3>Мой Twitch</h3>
-                        <p>Прямые трансляции.</p>
-                    </div>
-                </a>
+        <section id="horror" class="mod-section">
+            <div class="section-header reveal">
+                <h2 class="glitch-text" data-text="ERROR_HORROR">ERROR_HORROR</h2>
+                <div class="line red-line"></div>
             </div>
-        </div>
+            <div class="mod-grid">
+                <div class="mod-card horror reveal">
+                    <div class="card-image" style="background-image: url('./horror.jpg');"></div>
+                    <div class="card-info">
+                        <span class="mod-id">#ID_001</span>
+                        <h3>Split Self</h3>
+                        <p>Ваше сознание разделяется. Жуткая копия вашего персонажа начинает преследовать вас.</p>
+                        <div class="card-footer">
+                            <span class="version">1.21.1 // Fabric</span>
+                            <a href="https://modrinth.com/mod/split-self" class="dl-link" target="_blank">GET_DATA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visual" class="mod-section">
+            <div class="section-header">
+                <h2 class="visual-glow">VISUAL_CORE</h2>
+                <div class="line blue-line"></div>
+            </div>
+
+            <div class="mod-grid">
+                <div class="mod-card visual reveal">
+                    <div class="card-image" style="background-image: url('./maxresdefault.jpg');"></div>
+                    <div class="card-info">
+                        <span class="mod-id">#ID_V01</span>
+                        <h3>Camera Overhaul</h3>
+                        <p>Добавляет реалистичные наклоны камеры при движении, прыжках и поворотах, делая геймплей
+                            намного динамичнее.</p>
+                        <div class="card-footer">
+                            <span class="version">1.14 + // Fabric | Forge | NeoForge | Quilt</span>
+                            <div class="stats"
+                                style="font-family: 'Syncopate', sans-serif; font-size: 0.7rem; color: var(--blue); opacity: 0.8;">
+                                <span id="count-camera">0</span> ⬇
+                            </div>
+                            <a href="https://modrinth.com/mod/cameraoverhaul" class="dl-link" target="_blank"
+                                onclick="updateCount('camera')">GET_DATA // Modrinth</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mod-card visual reveal">
+                    <div class="card-image" style="background-image: url('./638154484430429313.png');"></div>
+                    <div class="card-info">
+                        <span class="mod-id">#ID_V02</span>
+                        <h3>Cull Less Leaves</h3>
+                        <p>Оптимизирует рендеринг листвы, убирая невидимые грани. Значительно повышает FPS в лесах,
+                            сохраняя красоту деревьев.</p>
+                        <div class="card-footer">
+                            <span class="version">1.18.2 + // Fabric | Quilt</span>
+                            <div class="stats"
+                                style="font-family: 'Syncopate', sans-serif; font-size: 0.7rem; color: var(--blue); opacity: 0.8;">
+                                <span id="count-leaves">0</span> ⬇
+                            </div>
+                            <a href="https://modrinth.com/mod/cull-less-leaves" class="dl-link" target="_blank"
+                                onclick="updateCount('leaves')">GET_DATA // Modrinth</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mod-card visual reveal">
+                    <div class="card-image" style="background-image: url('./638861240221497743.png');"></div>
+                    <div class="card-info">
+                        <span class="mod-id">#ID_V03</span>
+                        <h3>Just Zoom</h3>
+                        <p>Минималистичный и очень легкий мод на зум. Позволяет плавно приближать взгляд без лишних
+                            настроек.</p>
+                        <div class="card-footer">
+                            <span class="version">1.16.2 + // Fabric | Forge | NeoForge</span>
+                            <div class="stats"
+                                style="font-family: 'Syncopate', sans-serif; font-size: 0.7rem; color: var(--blue); opacity: 0.8;">
+                                <span id="count-zoom">0</span> ⬇
+                            </div>
+                            <a href="https://modrinth.com/mod/just-zoom" class="dl-link" target="_blank"
+                                onclick="updateCount('zoom')">GET_DATA // Modrinth</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shaders" class="mod-section">
+            <div class="section-header reveal">
+                <h2 class="shaders-glow">SHADERS_CORE</h2>
+                <div class="line green-line"></div>
+            </div>
+            <div class="mod-grid">
+                <div class="mod-card shaders reveal">
+                    <div class="card-image" style="background-image: url('./shady.jpg');"></div>
+                    <div class="card-info">
+                        <span class="mod-id">#ID_S01</span>
+                        <h3>Insanity Shader</h3>
+                        <p>Идеальный шейдер для хоррор-сборок. Мрачная атмосфера, реалистичный туман и гнетущие тени.
+                        </p>
+                        <div class="card-footer">
+                            <span class="version">Optifine // Iris</span>
+                            <div class="stats"
+                                style="font-family: 'Syncopate', sans-serif; font-size: 0.7rem; color: var(--green); opacity: 0.8;">
+                                <span id="count-insanity">0</span> ⬇
+                            </div>
+                            <a href="https://modrinth.com/shader/insanity-shader" class="dl-link" target="_blank"
+                                onclick="updateCount('insanity')">GET_DATA // Modrinth</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-   
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">INFO<sup>®</sup></div>
-            <p>© 2026. Этот сайт создал я. Всем приууээээт</p>
+    <footer class="footer">
+        <div class="footer-content" style="text-align: center; padding: 40px 0;">
+            <p>© 2026 MODS_VAULT // TERMINAL_ACCESS</p>
+            <div class="footer-line"
+                style="height: 1px; background: rgba(255,255,255,0.05); width: 100px; margin: 20px auto;"></div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="particles-config.js"></script>
-    <script src="clicker.js"></script>
-    <script>
-        // Код для плавного появления и полоски прокрутки
-        window.addEventListener('DOMContentLoaded', () => {
-            document.body.classList.add('loaded');
-            
-            window.onscroll = function() {
-                let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-                let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                let scrolled = (winScroll / height) * 100;
-                let progressBar = document.querySelector(".scroll-progress");
-                if(progressBar) progressBar.style.width = scrolled + "%";
-            };
-        });
-    </script>
+    <button id="backToTop">UP_SYSTEM</button>
+    <script src="script.js"></script>
 </body>
+
 </html>
