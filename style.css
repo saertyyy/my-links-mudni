@@ -1,4 +1,12 @@
-/* --- 1. БАЗОВЫЕ ПЕРЕМЕННЫЕ И ШРИФТЫ --- */
+* {
+    cursor: crosshair !important;
+}
+
+/* Чтобы на ссылках он менялся или светился */
+a:hover {
+    text-shadow: 0 0 10px #00f2ff;
+}
+
 :root {
     --bg: #050505;
     --red: #ff003c;
@@ -14,8 +22,6 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    cursor: none !important;
-    /* Наш кастомный прицел */
 }
 
 body {
@@ -38,49 +44,7 @@ body {
     z-index: 1000;
 }
 
-/* Свечение за мышкой — ВАЖНО: z-index: 1 (самый низ) */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 242, 255, 0.07), transparent 40%);
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* --- 2. ГЛАВНЫЙ ЭКРАН (HERO) --- */
-.hero {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    background-image: url('vault01.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    z-index: 2;
-    /* Выше свечения */
-}
-
-/* Затемнение фона */
-.hero::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
-
-/* --- 3. НАВИГАЦИЯ --- */
+/* Навигация */
 .navbar {
     position: fixed;
     top: 0;
@@ -115,11 +79,77 @@ body::before {
 
 .logo {
     color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
     border: 1px solid #fff;
     padding: 5px 15px;
 }
 
-/* --- 4. КОНТЕНТ И КАРТОЧКИ --- */
+/* Hero Секция с новым фоном */
+.hero {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url('vault01.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Затемнение фона для читаемости текста */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero {
+    position: relative;
+    z-index: 1; /* Фон будет внизу */
+    background-size: cover;
+    background-position: center;
+}
+
+.main-title {
+    font-family: var(--font-accent);
+    font-size: clamp(3rem, 10vw, 6rem);
+    letter-spacing: -2px;
+    /* Добавляем новый цвет и свечение */
+    color: #00f2ff;
+    text-shadow:
+        0 0 10px rgba(0, 242, 255, 0.7),
+        0 0 20px rgba(0, 242, 255, 0.4);
+    transition: 0.3s;
+    position: relative;
+    z-index: 2;
+}
+
+/* Эффект при наведении для красоты */
+.main-title:hover {
+    color: #fff;
+    text-shadow:
+        0 0 15px #00f2ff,
+        0 0 30px #00f2ff;
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: 1rem;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Контент и Секции */
 .content-wrapper {
     max-width: 1200px;
     margin: 0 auto;
@@ -128,6 +158,32 @@ body::before {
     z-index: 10;
 }
 
+.section-header {
+    margin-bottom: 50px;
+}
+
+.line {
+    height: 2px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+.red-line {
+    background: var(--red);
+    box-shadow: 0 0 10px var(--red);
+}
+
+.blue-line {
+    background: var(--blue);
+    box-shadow: 0 0 10px var(--blue);
+}
+
+.green-line {
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+}
+
+/* Сетки и Карточки */
 .mod-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -139,7 +195,6 @@ body::before {
     border: 1px solid #1a1a1a;
     transition: 0.4s;
     position: relative;
-    z-index: 11;
 }
 
 .mod-card:hover {
@@ -163,63 +218,48 @@ body::before {
     padding: 25px;
 }
 
-/* --- 5. АНИМАЦИИ ПОЯВЛЕНИЯ (REVEAL) --- */
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.mod-id {
+    font-size: 0.7rem;
+    color: #444;
+    font-family: var(--font-accent);
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.card-info h3 {
+    margin: 10px 0;
+    letter-spacing: 1px;
 }
 
-/* Очередь появления карточек (эффект волны) */
-.mod-grid .reveal:nth-child(1) {
-    transition-delay: 0.1s;
+.card-info p {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-.mod-grid .reveal:nth-child(2) {
-    transition-delay: 0.25s;
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }
 
-.mod-grid .reveal:nth-child(3) {
-    transition-delay: 0.4s;
+.dl-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8rem;
+    border: 1px solid #333;
+    padding: 8px 15px;
+    transition: 0.3s;
 }
 
-/* Если нет JS, показываем карточки сразу */
-.no-js .reveal {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- 6. КУРСОР-ПРИЦЕЛ --- */
-#custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #00f2ff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 10000;
-    transition: transform 0.15s ease-out, border-color 0.2s;
-    background:
-        linear-gradient(to right, #00f2ff 2px, transparent 2px) 50% 50% / 100% 2px no-repeat,
-        linear-gradient(to bottom, #00f2ff 2px, transparent 2px) 50% 50% / 2px 100% no-repeat;
-}
-
-#custom-cursor.active {
-    transform: scale(1.4) rotate(45deg);
-    border-color: #ff0000;
-    box-shadow: 0 0 15px #ff0000;
-}
-
-/* --- 7. ЦВЕТОВЫЕ ТЕМЫ (СЕКЦИИ) --- */
+/* Ховер-эффекты для разных категорий */
 .horror:hover {
     border-color: var(--red);
     box-shadow: 0 0 30px rgba(255, 0, 60, 0.1);
+}
+
+.horror:hover .dl-link {
+    background: var(--red);
+    border-color: var(--red);
 }
 
 .visual:hover {
@@ -227,27 +267,23 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
 }
 
+.visual:hover .dl-link {
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
 .shaders:hover {
     border-color: var(--green);
     box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
 }
 
-/* Линии и свечение */
-.red-line {
-    background: var(--red);
-    box-shadow: 0 0 10px var(--red);
-}
-
-.blue-line {
-    background: var(--blue);
-    box-shadow: 0 0 10px var(--blue);
-}
-
-.green-line {
+.shaders:hover .dl-link {
     background: var(--green);
-    box-shadow: 0 0 10px var(--green);
+    border-color: var(--green);
+    color: #000;
 }
 
+/* Свечение заголовков */
 .visual-glow {
     color: var(--blue);
     text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
@@ -256,6 +292,22 @@ body::before {
 .shaders-glow {
     color: var(--green);
     text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Навигация: ховеры */
+.color-horror:hover {
+    color: var(--red);
+    text-shadow: 0 0 10px var(--red);
+}
+
+.color-visual:hover {
+    color: var(--blue);
+    text-shadow: 0 0 10px var(--blue);
+}
+
+.color-shaders:hover {
+    color: var(--green);
+    text-shadow: 0 0 10px var(--green);
 }
 
 /* Кнопка наверх */
@@ -267,7 +319,121 @@ body::before {
     border: 1px solid #333;
     color: #fff;
     padding: 10px;
-    z-index: 1001;
+    cursor: pointer;
+    display: none;
     font-family: var(--font-accent);
     font-size: 0.6rem;
+    z-index: 1001;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(600px circle at var(--x) var(--y), rgba(0, 242, 255, 0.05), transparent 40%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Мягкий градиент, привязанный к координатам из JS */
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
+            rgba(0, 242, 255, 0.07),
+            transparent 40%);
+    z-index: -1;
+    /* Поверх фона, но под текстом */
+    pointer-events: none;
+    /* Чтобы не мешало кликать на кнопки */
+}
+
+/* Сделаем курсор в стиле терминала */
+/* Скрываем стандартный курсор полностью */
+* {
+    cursor: none !important;
+}
+
+/* Стили нашего технологичного прицела */
+#custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #00f2ff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    /* Плавный поворот и масштабирование */
+    transition: transform 0.15s ease-out, border-color 0.2s, box-shadow 0.2s;
+    /* Рисуем перекрестие внутри */
+    background:
+        linear-gradient(to right, #00f2ff 2px, transparent 2px) 50% 50% / 100% 2px no-repeat,
+        linear-gradient(to bottom, #00f2ff 2px, transparent 2px) 50% 50% / 2px 100% no-repeat;
+}
+
+/* Состояние при наведении на кнопки (вращение на 45 градусов) */
+#custom-cursor.active {
+    transform: scale(1.4) rotate(45deg);
+    border-color: #ff0000;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+/* Эффект для ссылок при наведении */
+.nav-item:hover,
+.dl-link:hover {
+    filter: drop-shadow(0 0 8px #00f2ff);
+    transform: translateY(-2px);
+    transition: 0.3s ease;
+}
+
+/* Начальное состояние: элемент прозрачный и немного смещен вниз */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Состояние после появления */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Добавим небольшую задержку для карточек в сетке, чтобы они выходили по очереди */
+.mod-card:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.mod-card:nth-child(3) {
+    transition-delay: 0.4s;
+}/* Начальная позиция: скрыто и смещено вниз */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Когда JS добавит этот класс, элемент плавно появится */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Чтобы карточки в сетке появлялись по очереди, а не все разом */
+.mod-card.reveal:nth-child(1) { transition-delay: 0.1s; }
+.mod-card.reveal:nth-child(2) { transition-delay: 0.3s; }
+.mod-card.reveal:nth-child(3) { transition-delay: 0.5s; }
+.mod-card.reveal:nth-child(4) { transition-delay: 0.7s; }
+/* Если нет JS, показываем карточки сразу */
+.no-js .reveal {
+    opacity: 1;
+    transform: translateY(0);
 }
